@@ -3,122 +3,547 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONVMWEB | Solusi Digital Batang</title>
+    <title>ONVMWEB | Solusi Website Profesional Batang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #38bdf8; --dark-bg: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc; --text-dim: #94a3b8; }
+        :root { 
+            --primary: #38bdf8; 
+            --primary-dark: #0ea5e9;
+            --dark-bg: #0f172a; 
+            --card-bg: #1e293b; 
+            --text-main: #f8fafc; 
+            --text-dim: #94a3b8;
+            --success: #22c55e;
+        }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--dark-bg); color: var(--text-main); scroll-behavior: smooth; line-height: 1.6; }
-
-        /* NAVBAR MOBILE FRIENDLY */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: rgba(15, 23, 42, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .logo { font-weight: 800; font-size: 1.5rem; text-decoration: none; color: white; }
-        .logo span { color: var(--primary); }
-        
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
-        .menu-toggle { display: none; font-size: 1.5rem; color: white; cursor: pointer; }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--card-bg); padding: 20px; text-align: center; border-bottom: 1px solid var(--primary); }
-            .nav-links.active { display: flex; }
-            .menu-toggle { display: block; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--dark-bg); 
+            color: var(--text-main); 
+            scroll-behavior: smooth; 
+            line-height: 1.6; 
         }
 
-        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 5% 60px; background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15) 0%, transparent 70%); }
-        .hero h1 { font-size: clamp(2rem, 8vw, 4rem); font-weight: 800; margin-bottom: 20px; }
-        .hero h1 span { color: var(--primary); }
+        /* NAVBAR */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 8%; 
+            background: rgba(15, 23, 42, 0.98); 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+        }
+        .logo { 
+            font-weight: 800; 
+            font-size: 1.5rem; 
+            text-decoration: none; 
+            color: white; 
+            transition: color 0.3s;
+        }
+        .logo:hover { color: var(--primary); }
+        .logo span { color: var(--primary); }
+        
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { 
+            color: var(--text-main); 
+            text-decoration: none; 
+            font-weight: 500; 
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        
+        .menu-toggle { 
+            display: none; 
+            font-size: 1.5rem; 
+            color: white; 
+            cursor: pointer;
+            padding: 5px;
+        }
 
-        .contact-wrap { padding: 80px 8%; }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background: var(--card-bg); 
+                padding: 20px; 
+                text-align: center; 
+                border-bottom: 2px solid var(--primary);
+                gap: 15px;
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .nav-links a::after { display: none; }
+        }
 
-        /* MAPS STYLING */
-        .map-box { height: 400px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
-        iframe { width: 100%; height: 100%; border: 0; filter: grayscale(1) invert(1); }
+        /* HERO SECTION */
+        .hero { 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            padding: 140px 5% 80px; 
+            background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338bdf8' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { 
+            font-size: clamp(2rem, 6vw, 3.5rem); 
+            font-weight: 800; 
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+        .hero h1 span { 
+            color: var(--primary);
+            display: block;
+        }
+        .hero p { 
+            color: var(--text-dim); 
+            max-width: 650px; 
+            margin: 0 auto 35px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .cta-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .btn {
+            padding: 15px 35px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+        }
+        .btn-primary {
+            background: var(--primary); 
+            color: var(--dark-bg);
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+        .trust-badges {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        .trust-badges span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .trust-badges i { color: var(--success); }
+
+        @media (max-width: 640px) {
+            .cta-group { flex-direction: column; width: 100%; }
+            .btn { width: 100%; justify-content: center; }
+            .trust-badges { flex-direction: column; gap: 10px; }
+        }
+
+        /* CONTACT SECTION */
+        .contact-wrap { 
+            padding: 100px 8%; 
+            background: linear-gradient(to bottom, var(--dark-bg), var(--card-bg));
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .section-header h2 span { color: var(--primary); }
+        .section-header p {
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+        .contact-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 50px;
+            align-items: start;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--text-main);
+        }
+        .contact-info h3 span { color: var(--primary); }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
+        }
+        .contact-item:hover {
+            background: rgba(56, 189, 248, 0.05);
+            border-color: rgba(56, 189, 248, 0.2);
+            transform: translateX(5px);
+        }
+        .contact-item i {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-top: 3px;
+        }
+        .contact-item div strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-main);
+        }
+        .contact-item div p, .contact-item div a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .contact-item div a:hover { color: var(--primary); }
+        
+        .social-proof {
+            background: var(--card-bg); 
+            padding: 20px; 
+            border-radius: 12px; 
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            margin-top: 30px;
+        }
+        .social-proof p {
+            font-size: 0.95rem; 
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .social-proof i { 
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+        .social-proof strong { color: var(--text-main); }
+
+        /* MAP */
+        .map-box { 
+            height: 450px; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            border: 2px solid rgba(56, 189, 248, 0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        iframe { 
+            width: 100%; 
+            height: 100%; 
+            border: 0;
+        }
+
+        @media (max-width: 968px) { 
+            .contact-grid { grid-template-columns: 1fr; }
+            .map-box { height: 400px; }
+        }
+
+        /* FOOTER CTA */
+        .footer-cta {
+            text-align: center; 
+            padding: 80px 8%; 
+            background: var(--card-bg); 
+            border-top: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .footer-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+        .footer-cta h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .footer-cta p {
+            color: var(--text-dim); 
+            margin-bottom: 35px; 
+            max-width: 600px; 
+            margin-left: auto; 
+            margin-right: auto;
+            font-size: 1.05rem;
+        }
+        .footer-cta .cta-group {
+            margin-bottom: 0;
+        }
+
+        /* FLOATING WA BUTTON */
+        .floating-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        .floating-wa:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7); }
+        }
+
+        @media (max-width: 640px) {
+            .floating-wa {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.7rem;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- NAVBAR -->
     <nav>
         <a href="./" class="logo">ONVM<span>WEB.</span></a>
         <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
             <i class="fas fa-bars"></i>
         </div>
         <div class="nav-links">
-            <a href="./">Home</a>
+            <a href="./">Beranda</a>
             <a href="layanan.html">Layanan</a>
-            <a href="#kontak">Hubungi Kami</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="#kontak">Kontak</a>
         </div>
     </nav>
 
-    <!-- HERO SECTION - COPY LEBIH MENARIK -->
+    <!-- HERO SECTION -->
     <header class="hero">
-        <h1>Ubah Bisnis Lokal Jadi <span>Branding Digital Premium</span></h1>
-        <p style="color: var(--text-dim); max-width: 600px; margin-bottom: 30px;">
-            Kami membantu UMKM di Subah & Batang memiliki website profesional yang tidak hanya indah, 
-            tapi juga <strong>meningkatkan kepercayaan pelanggan dan penjualan</strong>.
-        </p>
-        <a href="https://wa.me/62818657329" style="background: var(--primary); color: var(--dark-bg); padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px;">
-            <i class="fab fa-whatsapp"></i> Konsultasi Gratis via WhatsApp
-        </a>
-        <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 20px;">
-            ✓ Responsif di HP & Laptop &nbsp;|&nbsp; ✓ SEO-Friendly &nbsp;|&nbsp; ✓ Support Lokal Batang
-        </p>
+        <div class="hero-content">
+            <h1>
+                Ubah Bisnis Lokal Jadi
+                <span>Branding Digital Premium</span>
+            </h1>
+            <p>
+                Kami membantu UMKM di Subah & Batang memiliki website profesional yang tidak hanya indah, 
+                tapi juga <strong>meningkatkan kepercayaan pelanggan dan penjualan</strong>. 
+                Dari konsep hingga online, kami temani bisnis Anda.
+            </p>
+            <div class="cta-group">
+                <a href="https://wa.me/62818657329" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i> Konsultasi Gratis
+                </a>
+                <a href="layanan.html" class="btn btn-secondary">
+                    <i class="fas fa-arrow-right"></i> Lihat Layanan
+                </a>
+            </div>
+            <div class="trust-badges">
+                <span><i class="fas fa-check-circle"></i> Responsive Design</span>
+                <span><i class="fas fa-check-circle"></i> SEO Optimized</span>
+                <span><i class="fas fa-check-circle"></i> Support Lokal Batang</span>
+                <span><i class="fas fa-check-circle"></i> Gratis SSL & Backup</span>
+            </div>
+        </div>
     </header>
 
-    <!-- CONTACT SECTION - COPY LEBIH PERSONAL -->
+    <!-- CONTACT SECTION -->
     <section id="kontak" class="contact-wrap">
+        <div class="section-header">
+            <h2>Mari <span>Berkolaborasi</span></h2>
+            <p>Kunjungi kantor kami atau hubungi untuk konsultasi gratis tentang project website impian Anda</p>
+        </div>
+        
         <div class="contact-grid">
-            <div>
-                <h2 style="font-size: 2rem; margin-bottom: 20px;">Kami Hadir <span>Di Sini Untuk Anda</span></h2>
-                <p style="color: var(--text-dim); margin-bottom: 10px;">
-                    <i class="fas fa-map-marker-alt" style="color: var(--primary); margin-right: 8px;"></i>
-                    Pagersari, Karangtengah, Subah,
-                </p>
-                <p style="color: var(--text-dim); margin-bottom: 30px;">
-                    Kabupaten Batang, Jawa Tengah 51262
-                </p>
+            <div class="contact-info">
+                <h3>Lokasi & <span>Kontak Kami</span></h3>
                 
-                <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;">
-                    <a href="https://wa.me/62818657329" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 10px; font-weight: 500;">
-                        <i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.2rem;"></i>
-                        0818-657-329 <span style="color: var(--primary); font-size: 0.85rem;">(Fast Response)</span>
-                    </a>
-                    <p style="color: var(--text-dim); display: flex; align-items: center; gap: 10px;">
-                        <i class="fas fa-clock" style="color: var(--primary);"></i>
-                        Senin - Sabtu: 08.00 - 20.00 WIB
-                    </p>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Alamat Kantor</strong>
+                        <p>Avara Ganesh Bata Keraton<br>Pagersari, Karangtengah, Subah<br>Kabupaten Batang, Jawa Tengah 51262</p>
+                    </div>
                 </div>
 
-                <!-- SOCIAL PROOF MINI -->
-                <div style="background: var(--card-bg); padding: 15px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.2);">
-                    <p style="font-size: 0.9rem; color: var(--text-dim);">
-                        <i class="fas fa-check-circle" style="color: var(--primary); margin-right: 5px;"></i>
-                        <strong>50+ UMKM</strong> di Batang telah mempercayakan website mereka kepada kami.
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <strong>WhatsApp / Telepon</strong>
+                        <a href="https://wa.me/62818657329">0818-657-329</a>
+                        <p style="font-size: 0.85rem; margin-top: 5px; color: var(--success);">
+                            <i class="fas fa-bolt"></i> Fast Response
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Jam Operasional</strong>
+                        <p>Senin - Sabtu: 08.00 - 20.00 WIB<br>Minggu: By Appointment</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong>
+                        <a href="mailto:info@onvmweb.com">info@onvmweb.com</a>
+                    </div>
+                </div>
+
+                <div class="social-proof">
+                    <p>
+                        <i class="fas fa-check-circle"></i>
+                        <strong>50+ UMKM</strong> di Batang & sekitarnya telah mempercayakan website mereka kepada kami
                     </p>
                 </div>
             </div>
             
             <div class="map-box">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.334057885418!2d109.89418067425418!3d-6.969854768243684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e702db0ac53f5f3%3A0x9ffdb7402be3a6a8!2sKarangtengah%2C%20Kec.%20Subah%2C%20Kabupaten%20Batang%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1713580000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.334057885418!2d109.89418067425418!3d-6.969854768243684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e702db0ac53f5f3%3A0x9ffdb7402be3a6a8!2sAvara%20Ganesh%20Bata%20Keraton!5e0!3m2!1sid!2sid!4v1713580000000!5m2!1sid!2sid" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </section>
 
-    <!-- OPTIONAL: FOOTER MINI CTA -->
-    <section style="text-align: center; padding: 40px 8%; background: var(--card-bg); border-top: 1px solid rgba(255,255,255,0.05);">
-        <h3 style="margin-bottom: 15px;">Siap Go Digital? 🚀</h3>
-        <p style="color: var(--text-dim); margin-bottom: 25px; max-width: 500px; margin-left: auto; margin-right: auto;">
-            Diskusikan ide website impian Anda. Konsultasi awal <strong>100% gratis</strong>, tanpa komitmen.
+    <!-- FOOTER CTA -->
+    <section class="footer-cta">
+        <h3>Siap Go Digital? 🚀</h3>
+        <p>
+            Diskusikan ide website impian Anda sekarang. 
+            <strong>Konsultasi awal 100% gratis</strong>, tanpa komitmen. 
+            Kami siap membantu bisnis Anda tumbuh di era digital.
         </p>
-        <a href="https://wa.me/62818657329" style="background: var(--primary); color: var(--dark-bg); padding: 12px 28px; border-radius: 10px; text-decoration: none; font-weight: bold; margin: 0 10px;">
-            <i class="fab fa-whatsapp"></i> Chat WhatsApp
-        </a>
-        <a href="layanan.html" style="background: transparent; color: var(--primary); padding: 12px 28px; border-radius: 10px; text-decoration: none; font-weight: bold; border: 2px solid var(--primary); margin: 0 10px;">
-            Lihat Layanan
-        </a>
+        <div class="cta-group">
+            <a href="https://wa.me/62818657329" class="btn btn-primary">
+                <i class="fab fa-whatsapp"></i> Chat WhatsApp Sekarang
+            </a>
+            <a href="layanan.html" class="btn btn-secondary">
+                <i class="fas fa-th-list"></i> Lihat Paket Layanan
+            </a>
+        </div>
     </section>
+
+    <!-- FLOATING WA BUTTON -->
+    <a href="https://wa.me/62818657329" class="floating-wa" title="Chat WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Smooth scroll untuk link anchor
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(15, 23, 42, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+            } else {
+                nav.style.background = 'rgba(15, 23, 42, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
 
 </body>
 </html>
