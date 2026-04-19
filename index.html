@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONVMWEB | Solusi Digital Batang</title>
+    <title>ONVMWEB | Agency Website Profesional Batang</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary: #38bdf8;
@@ -14,27 +16,28 @@
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: var(--dark-bg); color: var(--text-main); line-height: 1.6; }
 
-        /* NAVBAR */
+        /* HEADER & NAVIGATION */
         nav { 
             display: flex; justify-content: space-between; align-items: center; 
             padding: 15px 6%; background: rgba(15, 23, 42, 0.98); 
-            position: fixed; width: 100%; top: 0; z-index: 1000; 
-            border-bottom: 1px solid rgba(255,255,255,0.1); 
+            position: fixed; width: 100%; top: 0; z-index: 2000; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
         }
-        .logo { font-weight: 800; font-size: 1.4rem; color: white; text-decoration: none; z-index: 1001; }
+        .logo { font-weight: 800; font-size: 1.5rem; color: white; text-decoration: none; z-index: 2001; }
         .logo span { color: var(--primary); }
 
         .nav-links { display: flex; gap: 10px; align-items: center; }
-        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; padding: 10px 15px; transition: 0.3s; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; padding: 10px 15px; transition: 0.3s; font-weight: 500; }
         .nav-links a:hover { color: var(--primary); }
         .nav-cta { background: var(--primary); color: #000 !important; border-radius: 8px; font-weight: 700 !important; }
 
-        /* MENU HP */
-        .menu-toggle { display: none; font-size: 1.5rem; color: white; cursor: pointer; z-index: 1001; }
+        /* MENU MOBILE (HP) */
+        .menu-toggle { display: none; font-size: 1.8rem; color: white; cursor: pointer; z-index: 2001; }
 
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
@@ -44,92 +47,178 @@
                 background: var(--dark-bg); padding-top: 100px; text-align: center; gap: 20px;
             }
             .nav-links.active { display: flex; }
-            .nav-links a { font-size: 1.2rem; width: 100%; }
+            .nav-links a { font-size: 1.3rem; width: 100%; }
         }
 
-        /* CONTENT */
-        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 5% 60px; }
-        .hero h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); font-weight: 900; line-height: 1.2; }
+        /* HERO SECTION */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 6% 60px; background: radial-gradient(circle at center, rgba(56, 189, 248, 0.1), transparent); }
+        .hero h1 { font-size: clamp(2.3rem, 8vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
         .hero h1 span { color: var(--primary); }
-        .section { padding: 100px 8% 60px; }
-        .section-header { text-align: center; margin-bottom: 40px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: var(--card-bg); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .hero p { color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin-bottom: 30px; }
+
+        /* COMMON SECTION */
+        .section { padding: 100px 6% 80px; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.2rem; font-weight: 800; }
+        .section-header h2 span { color: var(--primary); }
+
+        /* GRID SYSTEM */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .card { background: var(--card-bg); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; display: block; }
+        .card h3 { margin-bottom: 15px; font-size: 1.4rem; }
 
         /* PORTFOLIO */
-        .port-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid var(--primary); }
-        .port-img { height: 180px; background: #263548; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+        .port-card { background: var(--card-bg); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .port-card:hover { border-color: var(--primary); }
+        .port-img { height: 220px; background: #263548; display: flex; align-items: center; justify-content: center; position: relative; }
+        .port-img i { font-size: 4rem; color: rgba(56, 189, 248, 0.2); }
+        .port-info { padding: 25px; }
 
-        .map-container { height: 350px; border-radius: 20px; overflow: hidden; border: 2px solid var(--primary); margin-top: 20px; }
+        /* MAPS */
+        .map-wrapper { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; align-items: start; }
+        .map-info h3 { font-size: 1.8rem; margin-bottom: 20px; }
+        .map-container { height: 450px; border-radius: 24px; overflow: hidden; border: 2px solid var(--primary); }
         iframe { width: 100%; height: 100%; border: 0; }
-        .floating-wa { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; z-index: 1000; }
+
+        @media (max-width: 968px) {
+            .map-wrapper { grid-template-columns: 1fr; }
+            .map-container { height: 350px; }
+        }
+
+        /* FLOATING & FOOTER */
+        .floating-wa { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.3); text-decoration: none; }
+        footer { text-align: center; padding: 50px 6%; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-dim); font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="./" class="logo">ONVM<span>WEB.</span></a>
+        <a href="#beranda" class="logo">ONVM<span>WEB.</span></a>
         <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
         <div class="nav-links" id="nav-list">
             <a href="#beranda">Beranda</a>
             <a href="#tentang">Tentang</a>
             <a href="#layanan">Layanan</a>
             <a href="#portofolio">Portofolio</a>
-            <a href="https://wa.me/62818657329" class="nav-cta">Hubungi</a>
+            <a href="#kontak" class="nav-cta">Konsultasi</a>
         </div>
     </nav>
 
     <header class="hero" id="beranda">
-        <h1>Ubah Bisnis Jadi<br><span>Digital Premium</span></h1>
-        <p style="color: var(--text-dim); margin-top: 15px;">Solusi Website Mewah untuk UMKM Batang.</p>
-        <a href="#layanan" style="margin-top: 25px; display: inline-block; background: var(--primary); color: #000; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold;">Lihat Layanan</a>
+        <h1>Transformasi Bisnis ke<br><span>Digital Premium</span></h1>
+        <p>Jasa pembuatan website mewah & profesional khusus untuk UMKM dan Perusahaan di wilayah Subah, Batang, dan sekitarnya.</p>
+        <div style="display: flex; gap: 15px; margin-top: 10px;">
+            <a href="#layanan" style="background: var(--primary); color: #000; padding: 15px 35px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 1rem;">Lihat Paket</a>
+            <a href="https://wa.me/62818657329" style="border: 2px solid var(--primary); color: var(--primary); padding: 13px 35px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 1rem;">WhatsApp</a>
+        </div>
     </header>
 
     <section class="section" id="tentang">
-        <div class="section-header"><h2>Tentang <span>Kami</span></h2></div>
+        <div class="section-header">
+            <h2>Tentang <span>Kami</span></h2>
+            <p>Partner terpercaya Anda untuk membangun branding digital yang kuat.</p>
+        </div>
         <div class="grid">
-            <div class="card"><h3>Digital Partner</h3><p>Kami bantu bisnis lokal Subah go-online dengan mudah.</p></div>
-            <div class="card"><h3>Support 24/7</h3><p>Konsultasi gratis kapan saja via WhatsApp.</p></div>
+            <div class="card">
+                <i class="fas fa-gem"></i>
+                <h3>Desain Mewah</h3>
+                <p>Setiap detail kami kerjakan secara artistik agar bisnis Anda terlihat berkelas di mata klien.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-mobile-screen"></i>
+                <h3>Pasti Responsif</h3>
+                <p>Website otomatis menyesuaikan tampilan saat dibuka di HP, Tablet, maupun Laptop.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-magnifying-glass"></i>
+                <h3>SEO Friendly</h3>
+                <p>Website kami rancang agar mudah ditemukan oleh calon pelanggan di Google.</p>
+            </div>
         </div>
     </section>
 
     <section class="section" id="layanan" style="background: rgba(255,255,255,0.02);">
-        <div class="section-header"><h2>Layanan</h2></div>
+        <div class="section-header">
+            <h2>Layanan <span>Unggulan</span></h2>
+        </div>
         <div class="grid">
-            <div class="card"><h3>Website UMKM</h3><p>Landing page responsif & SEO friendly.</p></div>
-            <div class="card"><h3>Company Profile</h3><p>Branding profesional untuk perusahaan.</p></div>
+            <div class="card">
+                <h4 style="color:var(--primary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 10px;">Starter</h4>
+                <h3>Website UMKM</h3>
+                <p>Landing page profesional untuk mengenalkan produk Anda secara digital.</p>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="font-weight: 800; font-size: 1.2rem;">Mulai Rp 500rb-an</p>
+            </div>
+            <div class="card">
+                <h4 style="color:var(--primary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 10px;">Pro</h4>
+                <h3>Company Profile</h3>
+                <p>Website lengkap dengan banyak halaman untuk profil perusahaan yang kredibel.</p>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="font-weight: 800; font-size: 1.2rem;">Mulai Rp 1.5jt-an</p>
+            </div>
         </div>
     </section>
 
     <section class="section" id="portofolio">
-        <div class="section-header"><h2>Portofolio <span>Kami</span></h2></div>
+        <div class="section-header">
+            <h2>Karya <span>Terbaik</span> Kami</h2>
+        </div>
         <div class="grid">
             <div class="port-card">
-                <div class="port-img"><i class="fas fa-image fa-3x"></i></div>
-                <div style="padding: 20px;"><h3>Sekar Arum Wedding</h3><p>Website Portofolio</p></div>
+                <div class="port-img"><i class="fas fa-display"></i></div>
+                <div class="port-info">
+                    <h3>Sekar Arum Wedding</h3>
+                    <p style="color: var(--text-dim);">Website Wedding Batang</p>
+                </div>
             </div>
             <div class="port-card">
-                <div class="port-img"><i class="fas fa-image fa-3x"></i></div>
-                <div style="padding: 20px;"><h3>CST Logistic</h3><p>Website Logistik</p></div>
+                <div class="port-img"><i class="fas fa-truck-fast"></i></div>
+                <div class="port-info">
+                    <h3>CST Logistic</h3>
+                    <p style="color: var(--text-dim);">Website Jasa Pengiriman</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="section" id="kontak">
-        <div class="section-header"><h2>Lokasi</h2><p>Pagersari, Karangtengah, Subah, Batang.</p></div>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.5!2d109.8!3d-6.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e702580b453f5f3%3A0x9ffdb0102be3a6a8!2sSubah%2C%20Batang%20Regency%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1713580000000!5m2!1sen!2sid"></iframe>
+        <div class="map-wrapper">
+            <div class="map-info">
+                <h2>Lokasi <span>Studio</span></h2>
+                <p style="margin: 20px 0; color: var(--text-dim);">Silakan kunjungi workshop kami atau hubungi kami untuk janji temu di wilayah Subah dan sekitarnya.</p>
+                <div style="margin-top: 30px;">
+                    <p><strong>📍 Alamat:</strong></p>
+                    <p>Pagersari, Karangtengah, Subah, Batang, Jawa Tengah 51262</p>
+                    <p style="margin-top: 15px;"><strong>📞 WhatsApp:</strong></p>
+                    <p>0818-657-329</p>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.5!2d109.8!3d-6.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e702580b453f5f3%3A0x9ffdb0102be3a6a8!2sSubah%2C%20Batang%20Regency%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1713580000000!5m2!1sen!2sid"></iframe>
+            </div>
         </div>
     </section>
 
     <a href="https://wa.me/62818657329" class="floating-wa"><i class="fab fa-whatsapp"></i></a>
 
+    <footer>
+        <p>&copy; 2026 ONVMWEB Studio. All rights reserved.</p>
+        <p style="margin-top: 10px; font-size: 0.7rem;">Dibuat dengan dedikasi di Kabupaten Batang.</p>
+    </footer>
+
     <script>
+        // SCRIPT MENU HP
         const menuToggle = document.getElementById('mobile-menu');
         const navList = document.getElementById('nav-list');
-        menuToggle.addEventListener('click', () => { navList.classList.toggle('active'); });
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => { navList.classList.remove('active'); });
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
         });
     </script>
 </body>
