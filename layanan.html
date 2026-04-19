@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan | ONVMWEB Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #38bdf8; --dark-bg: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--dark-bg); color: var(--text-main); line-height: 1.6; }
 
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: rgba(30, 41, 59, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .logo { font-weight: 800; font-size: 1.6rem; text-decoration:none; color:white; }
+        .logo span { color: var(--primary); }
+        .nav-links a { color: var(--text-main); text-decoration: none; margin-left: 25px; font-weight: 500; font-size: 0.9rem; }
+
+        .header-page { padding: 150px 8% 50px; text-align: center; background: linear-gradient(to bottom, #1e293b, #0f172a); }
+        .header-page h1 { font-size: 3rem; color: var(--primary); margin-bottom: 10px; }
+
+        section { padding: 60px 8%; }
+        .service-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-box { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .service-box:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .service-box i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; display: block; }
+        .service-box h3 { margin-bottom: 15px; font-size: 1.5rem; }
+        .service-box p { color: #94a3b8; margin-bottom: 25px; }
+        
+        .btn-wa { background: #25d366; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; }
+
+        footer { padding: 50px 8%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">ONVM<span>WEB.</span></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="layanan.html" style="color: var(--primary);">Layanan</a>
+            <a href="index.html#portofolio">Portofolio</a>
+            <a href="index.html#kontak">Hubungi</a>
+        </div>
+    </nav>
+
+    <header class="header-page">
+        <h1>Layanan Kami</h1>
+        <p>Solusi Digital Terintegrasi untuk Bisnis Anda</p>
+    </header>
+
+    <section>
+        <div class="service-list">
+            <div class="service-box">
+                <i class="fas fa-code"></i>
+                <h3>Website Development</h3>
+                <p>Landing page, company profile, dan toko online dengan optimasi kecepatan tinggi.</p>
+                <a href="https://wa.me/62818657329?text=Halo, tanya jasa Web" class="btn-wa"><i class="fab fa-whatsapp"></i> Tanya Harga</a>
+            </div>
+            <div class="service-box">
+                <i class="fas fa-truck-fast"></i>
+                <h3>Logistic Systems</h3>
+                <p>Sistem manajemen pengiriman dan tracking barang profesional seperti CST Logistic.</p>
+                <a href="https://wa.me/62818657329?text=Halo, tanya jasa Sistem Logistik" class="btn-wa"><i class="fab fa-whatsapp"></i> Konsultasi</a>
+            </div>
+            <div class="service-box">
+                <i class="fas fa-bullhorn"></i>
+                <h3>Digital Marketing</h3>
+                <p>Strategi iklan dan SEO untuk mendatangkan lebih banyak pembeli ke bisnis Anda.</p>
+                <a href="https://wa.me/62818657329?text=Halo, tanya jasa Marketing" class="btn-wa"><i class="fab fa-whatsapp"></i> Tanya Detail</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 ONVMWEB Studio - Batang, Jawa Tengah</p>
+    </footer>
+
+</body>
+</html>
