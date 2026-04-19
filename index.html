@@ -3,157 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ONVMWEB - Solusi website profesional untuk UMKM & bisnis di Batang, Jawa Tengah. Jasa pembuatan website murah, responsive, dan SEO friendly.">
-    
     <title>ONVMWEB | Solusi Website Profesional Batang</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #38bdf8;
-            --primary-dark: #0ea5e9;
-            --primary-light: #7dd3fc;
             --dark-bg: #0f172a;
-            --dark-bg-2: #0c1322;
             --card-bg: #1e293b;
-            --card-bg-hover: #263548;
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
-            --success: #22c55e;
-            --border: rgba(255, 255, 255, 0.08);
-            --glow: rgba(56, 189, 248, 0.15);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--dark-bg); color: var(--text-main); line-height: 1.6; }
 
         /* NAVBAR */
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 12px 6%; background: rgba(15, 23, 42, 0.95);
+            padding: 15px 6%; background: rgba(15, 23, 42, 0.95);
             position: fixed; width: 100%; top: 0; z-index: 1000;
-            border-bottom: 1px solid var(--border); backdrop-filter: blur(15px);
-            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
         }
-        nav.scrolled { padding: 8px 6%; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); }
+        .logo { font-weight: 800; font-size: 1.4rem; color: white; text-decoration: none; }
+        .logo span { color: var(--primary); }
         
-        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-img {
-            width: 42px; height: 42px; border-radius: 10px; object-fit: cover;
-            border: 2px solid var(--primary); background: var(--card-bg);
-            display: flex; align-items: center; justify-content: center; color: var(--primary);
-        }
-        .logo-text { font-weight: 800; font-size: 1.4rem; color: white; letter-spacing: -0.5px; }
-        .logo-text span { color: var(--primary); }
-        
-        .nav-links { display: flex; gap: 8px; align-items: center; }
-        .nav-links a {
-            color: var(--text-dim); text-decoration: none; font-weight: 500;
-            font-size: 0.92rem; padding: 8px 16px; border-radius: 8px; transition: all 0.3s;
-        }
-        .nav-links a:hover, .nav-links a.active { color: var(--text-main); background: rgba(56, 189, 248, 0.1); }
-        .nav-cta {
-            background: var(--primary) !important; color: var(--dark-bg) !important;
-            font-weight: 600 !important; padding: 10px 22px !important;
-        }
-
-        .menu-toggle { display: none; font-size: 1.5rem; color: white; cursor: pointer; }
+        .nav-links { display: flex; gap: 15px; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.3s; padding: 8px 12px; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-cta { background: var(--primary); color: var(--dark-bg) !important; border-radius: 8px; font-weight: 700 !important; }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--card-bg); padding: 15px; border-bottom: 2px solid var(--primary); }
-            .nav-links.active { display: flex; }
-            .menu-toggle { display: block; }
+            .nav-links { display: none; }
         }
 
-        /* HERO */
-        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 140px 5% 80px; position: relative; overflow: hidden; }
-        .hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, var(--glow) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); animation: glowPulse 4s infinite; }
-        @keyframes glowPulse { 0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); } }
-        .hero-content { position: relative; z-index: 2; max-width: 800px; }
-        .hero h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 900; margin-bottom: 25px; }
-        .highlight { background: linear-gradient(135deg, var(--primary), var(--primary-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* SECTIONS */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 100px 5%; background: radial-gradient(circle at center, rgba(56, 189, 248, 0.1), transparent); }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+        .hero h1 span { color: var(--primary); }
 
-        /* SERVICE CARDS */
-        .section { padding: 100px 6%; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
-        .service-card { background: var(--card-bg); border-radius: 20px; padding: 35px 30px; border: 1px solid var(--border); transition: 0.4s; }
-        .service-card:hover { transform: translateY(-8px); border-color: var(--primary); }
-        .service-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+        .section { padding: 100px 8% 60px; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 span { color: var(--primary); }
 
-        /* CONTACT & MAPS */
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; max-width: 1200px; margin: 0 auto; }
-        .map-container { border-radius: 20px; overflow: hidden; border: 2px solid var(--border); height: 450px; }
+        /* CARDS */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+
+        /* PORTFOLIO */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .portfolio-item { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+        .portfolio-img { height: 200px; background: #263548; display: flex; align-items: center; justify-content: center; color: var(--text-dim); }
+
+        /* MAPS */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .map-container { height: 400px; border-radius: 20px; overflow: hidden; border: 2px solid var(--primary); }
+        iframe { width: 100%; height: 100%; border: 0; }
+
         @media (max-width: 968px) { .contact-grid { grid-template-columns: 1fr; } }
-
-        /* STATS */
-        .trust-stats { display: flex; gap: 40px; justify-content: center; margin-top: 40px; }
-        .stat-number { font-size: 2rem; font-weight: 800; color: var(--primary); }
-
-        .floating-wa { position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; z-index: 999; }
     </style>
 </head>
 <body>
 
-    <nav id="navbar">
-        <a href="./" class="logo">
-            <div class="logo-img"><i class="fas fa-code"></i></div>
-            <div class="logo-text">ONVM<span>WEB.</span></div>
-        </a>
-        <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
-            <i class="fas fa-bars"></i>
-        </div>
+    <nav>
+        <a href="./" class="logo">ONVM<span>WEB.</span></a>
         <div class="nav-links">
             <a href="#beranda">Beranda</a>
             <a href="#tentang">Tentang</a>
-            <a href="#layanan">Layanan</a>
+            <a href="layanan.html">Layanan</a>
             <a href="#portofolio">Portofolio</a>
-            <a href="#kontak" class="nav-cta">Hubungi Kami</a>
+            <a href="#kontak" class="nav-cta">Hubungi</a>
         </div>
     </nav>
 
     <header class="hero" id="beranda">
-        <div class="hero-glow"></div>
-        <div class="hero-content">
-            <div style="background: rgba(56, 189, 248, 0.1); padding: 8px 20px; border-radius: 50px; color: var(--primary); font-size: 0.85rem; margin-bottom: 20px;">
-                🚀 #1 Web Developer Lokal Batang
-            </div>
-            <h1>Ubah Bisnis Lokal Jadi <span class="highlight">Branding Digital</span></h1>
-            <p style="color: var(--text-dim); margin-bottom: 40px;">Kami membantu UMKM di Subah & Batang memiliki website profesional untuk meningkatkan penjualan.</p>
-            <div class="trust-stats">
-                <div><div class="stat-number">50+</div><p>Project</p></div>
-                <div><div class="stat-number">98%</div><p>Puas</p></div>
-            </div>
-        </div>
+        <h1>Bawa Bisnis Anda ke<br><span>Level Digital</span></h1>
+        <p style="color: var(--text-dim); margin-top: 20px;">Jasa Pembuatan Website Profesional di Subah, Batang.</p>
+        <a href="https://wa.me/62818657329" style="margin-top: 30px; background: var(--primary); color: black; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold;">Konsultasi Gratis</a>
     </header>
 
-    <section class="section" id="layanan">
+    <section class="section" id="tentang">
         <div class="section-header">
-            <h2>Solusi Digital <span>Lengkap</span></h2>
+            <h2>Tentang <span>Kami</span></h2>
+            <p>Kami adalah partner transformasi digital untuk UMKM Batang.</p>
         </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-rocket service-icon"></i>
-                <h3>Paket Starter</h3>
-                <p>Cocok untuk UMKM yang baru mulai go digital.</p>
-                <h4 style="color: var(--primary); margin-top: 20px;">Rp 500K /thn</h4>
+        <div class="grid">
+            <div class="card"><i class="fas fa-magic"></i><h3>Desain Mewah</h3><p>Website dengan tampilan modern dan elegan.</p></div>
+            <div class="card"><i class="fas fa-bolt"></i><h3>Performa Cepat</h3><p>Optimasi kecepatan agar pengunjung betah.</p></div>
+        </div>
+    </section>
+
+    <section class="section" id="portofolio" style="background: rgba(255,255,255,0.02);">
+        <div class="section-header">
+            <h2>Karya <span>Terbaik</span></h2>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-img"><i class="fas fa-image fa-3x"></i></div>
+                <div style="padding: 20px;"><h3>Sekar Arum Wedding</h3><p>Website Wedding Batang</p></div>
             </div>
-            <div class="service-card">
-                <i class="fas fa-gem service-icon"></i>
-                <h3>Paket Business</h3>
-                <p>Website multi-halaman dengan fitur SEO lengkap.</p>
-                <h4 style="color: var(--primary); margin-top: 20px;">Rp 1.5JT /thn</h4>
+            <div class="portfolio-item">
+                <div class="portfolio-img"><i class="fas fa-image fa-3x"></i></div>
+                <div style="padding: 20px;"><h3>CST Logistic</h3><p>Website Jasa Pengiriman</p></div>
             </div>
         </div>
     </section>
@@ -162,23 +115,14 @@
         <div class="contact-grid">
             <div>
                 <h2>Mari <span>Berkolaborasi</span></h2>
-                <p style="margin: 20px 0; color: var(--text-dim);">Pagersari, Karangtengah, Subah, Batang.</p>
-                <a href="https://wa.me/62818657329" class="btn-cta" style="background: var(--primary); color: black; padding: 15px 30px; border-radius: 12px; text-decoration: none; font-weight: bold; display: inline-block;">Chat WhatsApp</a>
+                <p style="margin: 20px 0; color: var(--text-dim);">Lokasi: Pagersari, Karangtengah, Subah, Batang.</p>
+                <p><i class="fab fa-whatsapp"></i> 0818-657-329</p>
             </div>
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/contrib/115251374375144422335/reviews" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15842.815523912198!2d109.87816825!3d-6.92595995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e702580b453f5f3%3A0xff9900402b32a6a8!2sKarangtengah%2C%20Subah%2C%20Batang%20Regency%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1713580000000!5m2!1sen!2sid"></iframe>
             </div>
         </div>
     </section>
 
-    <a href="https://wa.me/62818657329" class="floating-wa"><i class="fab fa-whatsapp"></i></a>
-
-    <script>
-        window.addEventListener('scroll', function () {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) nav.classList.add('scrolled');
-            else nav.classList.remove('scrolled');
-        });
-    </script>
 </body>
 </html>
